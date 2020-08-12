@@ -17,8 +17,12 @@ class WechatController extends Controller
 
     public function Token()
     {
-
+        $this->wechatService->app->server->push(function ($message)  {
+//            return $response;
+            return "您好！欢迎来到 我要找群";
+        });
         $response = $this->wechatService->app->server->serve();
+
         return $response;
 
     }
