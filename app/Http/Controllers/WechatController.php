@@ -26,14 +26,15 @@ class WechatController extends Controller
     {
 //        $string = "赵博";
 //        $response = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ['id'=>$string]);
-        $response = $this->wechatService->app->server->push(function ($message)  {
+           $this->wechatService->app->server->push(function ($message)  {
 //            return $response;
             return "您好！欢迎来到 我要找群";
         });
-        $text = new Text();
-        $text->setAttribute('content', '您好！欢迎来到 我要找群');
-//        $response = $this->wechatService->app->server->serve();
-        return $text;
+
+//        $text = new Text();
+//        $text->setAttribute('content', '您好！欢迎来到 我要找群');
+        $response = $this->wechatService->app->server->serve();
+        return $response;
 
     }
 }

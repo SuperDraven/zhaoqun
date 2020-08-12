@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get("/Token", "WechatController@Token");
-Route::get("/getImg", "WechatController@getImg");
+Route::any("/getImg", "WechatController@getImg");
