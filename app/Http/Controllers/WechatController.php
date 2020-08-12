@@ -23,13 +23,14 @@ class WechatController extends Controller
     }
     public function getImg()
     {
-        $string = "赵博";
-        $response = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ['id'=>$string]);
-        $this->wechatService->app->server->push(function ($message) use ($response) {
+//        $string = "赵博";
+//        $response = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ['id'=>$string]);
+        $response = $this->wechatService->app->server->push(function ($message)  {
 //            return $response;
             return "您好！欢迎来到 我要找群";
         });
-        $response = $this->wechatService->app->server->serve();
+        info($response);
+//        $response = $this->wechatService->app->server->serve();
         return $response;
 
     }
