@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\service\WechatService;
 use Illuminate\Http\Request;
+use EasyWeChat\Kernel\Messages\Text;
 
 class WechatController extends Controller
 {
@@ -29,9 +30,10 @@ class WechatController extends Controller
 //            return $response;
             return "您好！欢迎来到 我要找群";
         });
-        info($response);
+        $text = new Text();
+        $text->setAttribute('content', '您好！欢迎来到 我要找群');
 //        $response = $this->wechatService->app->server->serve();
-        return $response;
+        return $text;
 
     }
 }
