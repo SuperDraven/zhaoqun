@@ -33,10 +33,10 @@ class WechatController extends Controller
 
             preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$img,$match);
             $mediaId = $this->wechatService->getMediaId($match[1]);
-            Log::info("src:", $match[1]);
+            Log::info("src:", $match);
 
             $image = new Image($mediaId);
-            Log::info("img:", $image);
+//            Log::info("img:", $image);
             return $image;
         });
 
