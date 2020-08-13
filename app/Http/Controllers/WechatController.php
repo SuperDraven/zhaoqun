@@ -29,11 +29,11 @@ class WechatController extends Controller
 //            $content = explode($message['Content'], ",");
 //            Log::info("用户输入:", $message->Content);
             $img = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ["id"=>"吕力达"]);
-            Log::info("获取图片:", json_encode($img));
+            Log::info(json_encode($img));
 
             preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$img,$match);
             $mediaId = $this->wechatService->getMediaId($match[1]);
-            Log::info("src:", json_encode($match));
+            Log::info(json_encode($match));
 
             $image = new Image($mediaId);
 //            Log::info("img:", $image);
