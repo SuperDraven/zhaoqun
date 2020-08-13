@@ -36,28 +36,11 @@ class WechatService
 
     public function getMediaId($url = '')
     {
-        if (!empty($url)) {
-            $cache_key = 'get_media_id_' . $url;
-            $media_id = cache($cache_key);
-            if ($media_id === false) {
-                $imagePath = $this->downloadImage($url);
-                $data = [
-                    'midia' => realpath('.' . $imagePath),
-                ];
-                try {
-                    $result = $this->app->media->uploadImage($data['midia']);
-                    if ($result['media_id']) {
-                        $media_id = $result['media_id'];
-                        cache($cache_key, $media_id, 60 * 60 * 48);
-                    }
-                } catch (\Exception $e) {
 
-                }
-
-            }
-            return $media_id;
-        }
-        return false;
+        $imagePath = $this->downloadImage($url);
+        $result = $this->app->media->uploadImage(realpath('.' . $imagePath));
+        $media_id = $result['media_id'];
+        return $media_id;
     }
     public function downloadImage($url)
     {
