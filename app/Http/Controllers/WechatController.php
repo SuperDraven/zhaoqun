@@ -36,7 +36,7 @@ class WechatController extends Controller
             Log::info(json_encode($match));
 
             $image = new Image($mediaId);
-//            Log::info("img:", $image);
+            Log::info(json_encode($mediaId));
             return $image;
         });
 
