@@ -26,9 +26,9 @@ class WechatController extends Controller
     {
 
         $this->wechatService->app->server->push(function ($message)  {
-//            $content = explode($message['Content'], ",");
-            Log::info($message['Content']);
-            $img = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ["id"=>"吕力达"]);
+            $content = explode($message['Content'], " ");
+            Log::info(json_encode($content));
+            $img = $this->wechatService->send_post("http://www.yishuzi.com/b/re13.php", ["id"=>$content[1]]);
             Log::info(json_encode($img));
 
             preg_match('/<img.+src=\"?(.+\.(jpg|gif|bmp|bnp|png))\"?.+>/i',$img,$match);
